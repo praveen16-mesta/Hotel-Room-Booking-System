@@ -1,54 +1,42 @@
 package com.hotel.model;
 
 /**
- * Represents a hotel room.
- *
- * OOP Concept: ENCAPSULATION
- * - Private fields with public getters and setters to control access.
+ * Room class representing a hotel room.
+ * Tracks availability and the guest who booked it.
  */
 public class Room {
 
     private final int roomNumber;
-    private final String roomType; // Single, Double, Deluxe, Suite
-    private double tariff;         // Price per night
-    private boolean isAvailable;   // true if ready to book, false if occupied
+    private final String roomType;
+    private double tariff;
+    private boolean isAvailable;
+    private String bookedBy;
 
     public Room(int roomNumber, String roomType, double tariff) {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.tariff = tariff;
-        this.isAvailable = true; // rooms are available by default
+        this.isAvailable = true;
+        this.bookedBy = "";
     }
 
-    public int getRoomNumber() {
-        return roomNumber;
-    }
+    public int getRoomNumber() { return roomNumber; }
+    public String getRoomType() { return roomType; }
+    public double getTariff() { return tariff; }
+    public boolean isAvailable() { return isAvailable; }
 
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public double getTariff() {
-        return tariff;
-    }
-
-    public void setTariff(double tariff) {
-        this.tariff = tariff;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
+    public void setTariff(double tariff) { this.tariff = tariff; }
 
     public void setAvailable(boolean available) {
         this.isAvailable = available;
+        if (available) this.bookedBy = "";
     }
 
-    public String getStatus() {
-        return isAvailable ? "Available" : "Occupied";
-    }
+    public String getBookedBy() { return bookedBy; }
+    public void setBookedBy(String bookedBy) { this.bookedBy = bookedBy; }
 
     public String getDetails() {
-        return "Room #" + roomNumber + " [" + roomType + "] - Rs." + tariff + "/night | Status: " + getStatus();
+        String status = isAvailable ? "Available" : "Booked by " + bookedBy;
+        return "Room #" + roomNumber + " [" + roomType + "] - Rs." + tariff + "/night | Status: " + status;
     }
 }

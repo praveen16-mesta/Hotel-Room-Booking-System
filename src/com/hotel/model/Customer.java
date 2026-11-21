@@ -1,13 +1,7 @@
 package com.hotel.model;
 
 /**
- * Represents a customer who books rooms in the hotel.
- *
- * OOP Concept: INHERITANCE
- * - Customer extends Person, inheriting id, name, and phone.
- *
- * OOP Concept: POLYMORPHISM
- * - Overrides getRole() and getDetails() to add customer-specific data.
+ * Customer class extending Person (Inheritance & Polymorphism).
  */
 public class Customer extends Person {
 
@@ -16,10 +10,6 @@ public class Customer extends Person {
     public Customer(String id, String name, String phone) {
         super(id, name, phone);
         this.totalBookings = 0;
-    }
-
-    public int getTotalBookings() {
-        return totalBookings;
     }
 
     public void incrementBookings() {
@@ -33,6 +23,6 @@ public class Customer extends Person {
 
     @Override
     public String getDetails() {
-        return super.getDetails() + " | Total Bookings: " + totalBookings;
+        return super.getDetails() + " | Bookings: " + totalBookings;
     }
 }
